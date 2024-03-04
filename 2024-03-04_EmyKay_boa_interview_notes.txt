@@ -1,0 +1,164 @@
+"""
+- Develop a class that will represent a bank account.
+
+- The class must support the methods deposit, withdraw, and total_balance.
+
+- The currency has coins in these denominations: 1, 5, 10, 25, 100 (penny, nickel, dime, quarter, and dollar).
+
+- Total balance method:	
+
+    * Returns the total balance in terms of cents.
+
+- Deposit method:	
+
+* Must allow multiple coins of multiple denominations to be deposited in one deposit.	
+
+
+* For example, you can deposit 3 dollars, 7 quarters, and 11 nickels in one call to deposit. That would increase the balance by 530 cents.
+
+
+
+- Withdraw method:	
+
+* Input is the total amount to withdraw (in cents).
+
+
+* Return value is the coins that will make up the total withdraw, using the fewest number of coins required.	
+ 
+ 
+ * Assume that the bank has an unlimited number of each denomination of coin available for withdrawals.
+     	* For example, if withdraw is passed the number 562, the return should be 5 dollars, 2 quarters, 1 dime, and 2 pennies.
+         
+- Include appropriate error handling- You need to write code that validates the functionality of the class.
+
+"""
+
+# denominations_dict={1:0, 5:0, 10:0,25:0, 100:0}
+
+class BankAccount():
+    def __init__(self) -> None:
+        self.balance=0
+        pass
+
+    def get_balance(self)->int:
+        """- Total balance method:
+    * Returns the total balance in terms of cents."""
+        
+        return(self.balance)
+    
+    def deposit_cash(self,d_:dict)->None:
+        for k,v in d_.items():
+            # print("")
+            self.balance+=k*v
+
+    def check_balance_not_negative_next_transaction(self, next_transaction_cents):
+         if next_transaction_cents > self.balance:
+             raise ValueError("overdraft not allowed")
+
+
+    def withdraw_cash(self, cents)->dict:
+        print(f"withdraw_cash got {cents}")
+        self.check_balance_not_negative_next_transaction(cents)
+        centsRemaining=cents
+        denoms=[100,25,10,5,1]
+        return_val=dict()
+
+        for n in denoms:
+            subttl_this_denom=centsRemaining//n
+            print(f"subttl_this_denom: {subttl_this_denom}")
+            return_val[n]=subttl_this_denom
+            centsRemaining-=subttl_this_denom*n
+            self.balance -=subttl_this_denom*n
+        print(f"Withdrawal of {cents} cents processed, new balance is {self.balance}")
+        return(return_val)
+
+
+    
+ba=BankAccount()
+ba.deposit_cash({100:1,25:1})
+
+ba.get_balance()
+
+
+ba.withdraw_cash(124)
+
+ """
+Test plan:
+
+- Verify balance after transaction reflects correct totals
+    deposit 500
+    withdraw 300
+    new balance 200
+
+
+
+- Verify overdraft not allowed
+    deposit 500
+    withdraw 501
+    expect some failure behavior
+
+- Verify withdrawal gives as few coins as possible
+    deposit 100
+    withdraw 25
+        - get {25:1}
+
+    deposit 100
+    withdraw 6
+    get {5:1, 1:1}
+
+   
+"""
+
+
+####
+
+# Write a query to select all rows from the customer table where the last name is Smith.
+
+
+select * from Customer where last_name="Smith"
+
+####
+
+# You have an employee table with columns for first name, last name, and age. There is an employee in the table named Joe Smith. How do you update his age to 30?
+
+update Employee 
+    set age=30
+    where first_name = "Joe" and last_name = "Smith"
+
+
+
+# There is a "transactions" table, consisting of: 
+# column for transaction ID, 
+a column for customer name, 
+column for the sales amount,
+ and a column containing a foreign key to the regions table. 
+ 
+ 
+ The regions table consists of: 
+ region ID primary key, 
+ character column for region name. 
+ 
+ What is the SQL query to show the total sales amount for each region (by name)?
+ 
+ 
+with transactions_ as (select 
+                            sum(sales_amount) sales_sum,
+                            region_id
+                            from transactions)
+,
+regions_ as (select region_id, region_name from regions)
+
+
+select coalesce(t.sales_sum, 0),
+    # t.region_id,
+    # r.region_id,
+    r.region_name
+
+from transactions_
+right join
+regions_ r
+
+on t.region_id = r.region_id
+
+group by region_id
+ 
