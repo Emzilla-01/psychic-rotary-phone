@@ -1,12 +1,18 @@
 # psychic-rotary-phone
 Work sample in 45m call with introductions & questions:
 
-Interviewer seemed to suggest early to make it all quick answers.
+Interviewer seemed to suggest early to make all answers quick.
 
 - Brief intro yourself
+    7y dev, ops, data ops oriented career.
 - What are you looking for in your next job?
+    Place where I can share value by my experience and also grow my exp & skills.
+- What is a good working environment?
+    I emphasized collaboration, openness, knowledge sharing & interviewer seemed to approve the behavioral.
 - What is your fav DB?
+    Mongo, SQL, mentioned big data storage (hive block storage) vs compute (spark presto)
 - What motivates you at work?
+    Making impact and being the one to deliver solution.
 
 Coding tests expectations:
 **NO CHATGPT, CoPilot, etc AI assisted tools.🚫
@@ -36,3 +42,5 @@ I think overall it is a quick test of whether somebody can or cannot think about
 I think it is a pass✅ in a pass/fail early round survey📝👁‍🗨⚖. Success by being prepared, discussing the ideas and process, and perhaps some luck of the draw.
 
 2024-03-04
+
+Thank you, Mick & Patryk.
