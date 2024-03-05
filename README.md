@@ -21,6 +21,7 @@ Python task seemed to be approved.
 Interviewer noticed & agreed:
 - Python
     - dictionary for currency repr - agreed good approach. 
+    - floor division by denomination worked on the first try
 - SQL
     - idea that "DOB" & user_id are missing in UPDATE SET age example.
     - RIGHT JOIN & coalesce in GROUP BY example is good approach.
