@@ -120,10 +120,10 @@ select * from Customer where last_name="Smith"
 ####
 
 # You have an employee table with columns for first name, last name, and age. There is an employee in the table named Joe Smith. How do you update his age to 30?
-
 update Employee 
     set age=30
     where first_name = "Joe" and last_name = "Smith"
+    id = "123"
 
 
 
